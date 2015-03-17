@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="emf" />
+    </bean>
+
+    <!-- Instruct Spring to perform declarative transaction management automatically 
+    on annotated classes. -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
+
+    <jpa:repositories base-package="eu.acengineering.sample.querybyspec.repositories"
+                      entity-manager-factory-ref="emf" transaction-manager-ref="transactionManager" />
+                      
+    <beans profile="test">
+        <!-- HSQL-DB memory database; for testing only -->
+        <bean id="dataSource"
+                      class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+            <property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+            <property name="url" value="jdbc:hsqldb:mem:sample" />
+            <property name="username" value="sa" />
+            <property name="password" value="" />
+        </bean>
+
+        <!-- LOCAL entity manager factory -->
+        <bean id="emf"
+                      class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+            <property name="packagesToScan" value="eu.acengineering.sample.querybyspec.model" />
+            <property name="dataSource" ref="dataSource" />
+            <property name="jpaVendorAdapter">
+                <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                    <property name="showSql" value="true" />
+                    <property name="generateDdl" value="true" />
+                    <property name="databasePlatform" value="org.hibernate.dialect.HSQLDialect" />
+                </bean>
+            </property>
+        </bean>
+
+        <bean
+            class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+    </beans>
+    
+</beans>

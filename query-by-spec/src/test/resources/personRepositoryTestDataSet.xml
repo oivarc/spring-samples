@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+
+    <person id='1' name='Mario' surname='Rossi' city='Florence' age='23' />
+    <person id='2' name='Ugo' surname='Rossi' city='Florence' age='25' />
+    <person id='3' name='Mario' surname='Verdi' city='Rome' age='23' />
+    <person id='4' name='Caio' surname='Verdi' city='Rome' age='25' />
+    <person id='5' name='Giulia' surname='Verdi' city='Florence' age='27' />
+    
+</dataset>
