@@ -15,7 +15,7 @@
 		</layout>
 	</appender>
 
-	<logger name="com.fmc.energiscloud" additivity="false">
+	<logger name="eu.acengineering.sample.querybyspec" additivity="false">
 		<level value="WARN"/>
 		<appender-ref ref="CONSOLE"/>
 	</logger>
