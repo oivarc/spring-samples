@@ -11,7 +11,7 @@
 
 	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d{dd-MM_HH:mm:ss.SSS}|%p|%m|%C{1}|%X{leoSessionId}|%X{userId}%n" />
+			<param name="ConversionPattern" value="%d{dd-MM_HH:mm:ss.SSS}|%p|%m|%C{1}|%X{sessionId}|%X{userId}%n" />
 		</layout>
 	</appender>
 
