@@ -6,7 +6,7 @@
 		DEVELOPMENT SPECIFIC LOGGING CONFIGURATION
 		
 		To use a test env or a prod env specific configuration please override the "log4jConfigLocation"
-		context param with a value like "file:///etc/enegiscloud-gateway/log4j.xml"
+		
 	-->
 
 	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
